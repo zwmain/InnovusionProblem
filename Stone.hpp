@@ -130,3 +130,65 @@ void testB(const std::vector<double>& stoneArr, double diff, const std::pair<siz
     }
     std::cout << std::endl;
 }
+
+/**
+ * @brief 输出pair数组
+ *
+ * @param pairArr 待输出的数组
+ */
+void outputPairArr(const std::vector<std::pair<size_t, size_t>>& pairArr)
+{
+    bool isFirst = true;
+    for (auto& p : pairArr) {
+        if (isFirst) {
+            isFirst = false;
+        } else {
+            std::cout << " # ";
+        }
+        std::cout << p.first << "," << p.second;
+    }
+    std::cout << std::endl;
+}
+
+/**
+ * @brief 比较两个pair数组
+ *
+ * @param aArr a数组
+ * @param bArr b数组
+ * @return true 数组万全相同
+ * @return false 数组至少有一个不同
+ */
+bool cmpPairArr(const std::vector<std::pair<size_t, size_t>>& aArr, const std::vector<std::pair<size_t, size_t>>& bArr)
+{
+    if (aArr.size() != bArr.size()) {
+        return false;
+    }
+    for (size_t i = 0; i < aArr.size(); ++i) {
+        if (aArr[i] != bArr[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+/**
+ * @brief 测试findStonePairs
+ *
+ * @param stoneArr 石头重量数组
+ * @param diff 差值
+ * @param expectOutput 预期输出
+ */
+void testC(const std::vector<double>& stoneArr, double diff, const std::vector<std::pair<size_t, size_t>>& expectOutput)
+{
+    auto res = findStonePairs(stoneArr, diff);
+    std::cout << "Expect Output: ";
+    outputPairArr(expectOutput);
+    std::cout << "Actual Output: ";
+    outputPairArr(res);
+    if (cmpPairArr(res, expectOutput)) {
+        std::cout << "Success" << std::endl;
+    } else {
+        std::cout << "Fail" << std::endl;
+    }
+    std::cout << std::endl;
+}
