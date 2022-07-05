@@ -110,3 +110,23 @@ std::vector<std::pair<size_t, size_t>> findStonePairs(const std::vector<double>&
     }
     return res;
 }
+
+/**
+ * @brief 测试findStonePairB2
+ *
+ * @param stoneArr 石头重量数组
+ * @param diff 差值
+ * @param expectOutput 预期输出
+ */
+void testB(const std::vector<double>& stoneArr, double diff, const std::pair<size_t, size_t>& expectOutput)
+{
+    auto res = findStonePairB2(stoneArr, diff);
+    std::cout << "Expect Output: " << expectOutput.first << "," << expectOutput.second << std::endl;
+    std::cout << "Actual Output: " << res.first << "," << res.second << std::endl;
+    if (res == expectOutput) {
+        std::cout << "Success" << std::endl;
+    } else {
+        std::cout << "Fail" << std::endl;
+    }
+    std::cout << std::endl;
+}

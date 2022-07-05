@@ -11,4 +11,4 @@ if (MSVC)
     add_compile_options("/utf-8")
 endif()
 
-add_executable(${PROJECT_NAME} Stone.hpp)
+add_executable(${PROJECT_NAME} main.cpp Stone.hpp)
